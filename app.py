@@ -233,12 +233,15 @@ class LMSAssistant:
 
         try:
             self.login_to_cms(driver, enrollment, password, institute)
-            attendance_link = WebDriverWait(driver, 10).until(
-                EC.element_to_be_clickable(
-                    (By.CSS_SELECTOR,
-                     'a.list-group-item[href="https://cms.bahria.edu.pk/Sys/Student/ClassAttendance/StudentWiseAttendance.aspx"]'))
-            )
-            attendance_link.click()
+            # attendance_link = WebDriverWait(driver, 10).until(
+            #     EC.element_to_be_clickable(
+            #         (By.CSS_SELECTOR,
+            #          'a.list-group-item[href="https://cms.bahria.edu.pk/Sys/Student/ClassAttendance/StudentWiseAttendance.aspx"]'))
+            # )
+            # attendance_link.click()
+            #
+            driver.get("https://cms.bahria.edu.pk/Sys/Student/ClassAttendance/StudentWiseAttendance.aspx")
+
             driver.switch_to.window(driver.window_handles[-1])
             time.sleep(10)
             self.set_status("Attendance viewed.")
